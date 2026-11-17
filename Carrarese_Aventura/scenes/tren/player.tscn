@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c_player_carrarese_001"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_scr"]
+[ext_resource type="SpriteFrames" uid="uid://pf_carrarese_001" path="res://resources/player_frames.tres" id="2_frames"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
+radius = 16.0
+height = 100.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -60)
+scale = Vector2(1.18, 1.18)
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -50)
+shape = SubResource("CapsuleShape2D_1")
+
+[node name="ThrowPoint" type="Marker2D" parent="."]
+position = Vector2(28, -50)
+
+[node name="ScarfOverlay" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -51)
+
+[node name="CapOverlay" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -51)
+
+[node name="JerseyOverlay" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -51)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -40)
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 2703
+limit_bottom = 360
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+drag_top_margin = 0.15
+drag_bottom_margin = 0.15
+editor_draw_limits = true

@@ -1,0 +1,220 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5m3nu001"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/escenarios/estacion_carrara.png" id="2_bg"]
+[ext_resource type="SpriteFrames" uid="uid://pf_carrarese_001" path="res://resources/player_frames.tres" id="3_frames"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="StationBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.08, 0.16, 0.52)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 28.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "EL VIAJE DEL HINCHA DEL CARRARESE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 74.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 0.8)
+theme_override_font_sizes/font_size = 14
+text = "Camino al derbi contra el Spezia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProtagonistSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(170, 210)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_frames")
+animation = &"idle"
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -45.0
+offset_right = 210.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="BtnJugar" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "JUGAR"
+
+[node name="BtnOpciones" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "OPCIONES"
+
+[node name="BtnCreditos" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "CRÉDITOS"
+
+[node name="OptionsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="OptionsTitle" type="Label" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "OPCIONES"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Volumen Música"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="SfxLabel" type="Label" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Volumen SFX"
+
+[node name="SfxSlider" type="HSlider" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="HSeparator" type="HSeparator" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnCloseOptions" type="Button" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+text = "CERRAR"
+
+[node name="CreditsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -105.0
+offset_right = 190.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="CreditsTitle" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "CRÉDITOS"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center][b]EL VIAJE DEL HINCHA DEL CARRARESE[/b]
+Una odisea rumbo al derbi Carrarese vs Spezia.
+
+[color=#FFD700]Carrarese Calcio 1908[/color]
+Aventura retro pixel art en 2D.
+Desarrollado con Godot 4.[/center]"
+
+[node name="BtnCloseCredits" type="Button" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "CERRAR"
+
+[connection signal="pressed" from="ButtonsContainer/BtnJugar" to="." method="_on_btn_jugar_pressed"]
+[connection signal="pressed" from="ButtonsContainer/BtnOpciones" to="." method="_on_btn_opciones_pressed"]
+[connection signal="pressed" from="ButtonsContainer/BtnCreditos" to="." method="_on_btn_creditos_pressed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="OptionsPanel/VBoxContainer/BtnCloseOptions" to="." method="_on_btn_close_options_pressed"]
+[connection signal="pressed" from="CreditsPanel/VBoxContainer/BtnCloseCredits" to="." method="_on_btn_close_credits_pressed"]

@@ -1,0 +1,144 @@
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://pf_carrarese_001"]
+
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/idle_0.png" id="1_id0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/idle_1.png" id="2_id1"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/walk_0.png" id="3_wk0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/walk_1.png" id="4_wk1"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/walk_2.png" id="5_wk2"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/walk_3.png" id="6_wk3"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/jump_prep.png" id="7_jp0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/jump_up.png" id="8_jp1"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/jump_apex.png" id="9_jp2"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/jump_fall.png" id="10_jf0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/jump_land.png" id="11_jl0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/throw_0.png" id="12_th0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/throw_1.png" id="13_th1"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/throw_2.png" id="14_th2"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/throw_3.png" id="15_th3"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/hurt_0.png" id="16_hr0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/hurt_1.png" id="17_hr1"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/celebrate_0.png" id="18_cb0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/frames/celebrate_1.png" id="19_cb1"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_id0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_id1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wk3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wk3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jp2")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_jf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jl0")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_hr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hr1")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_th0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_th1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_th2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_th3")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_th1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_th3")
+}],
+"loop": false,
+"name": &"collect",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_cb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_cb1")
+}],
+"loop": true,
+"name": &"celebrate",
+"speed": 4.0
+}]

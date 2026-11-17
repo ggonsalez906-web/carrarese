@@ -1,0 +1,235 @@
+[gd_scene load_steps=22 format=3 uid="uid://c_tren_level_001"]
+
+[ext_resource type="Script" path="res://scripts/tren_level.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://assets/escenarios/paisaje_ventanas.png" id="2_paisaje"]
+[ext_resource type="Texture2D" path="res://assets/escenarios/interior_tren.png" id="3_wagon"]
+[ext_resource type="Texture2D" path="res://assets/escenarios/final_vagon.png" id="4_vagon_end"]
+[ext_resource type="PackedScene" uid="uid://c_player_carrarese_001" path="res://scenes/tren/player.tscn" id="6_plyr"]
+[ext_resource type="PackedScene" uid="uid://c_collectible_001" path="res://scenes/tren/collectible.tscn" id="7_clct"]
+[ext_resource type="PackedScene" uid="uid://c_obstacle_001" path="res://scenes/tren/obstacle.tscn" id="8_obst"]
+[ext_resource type="PackedScene" uid="uid://c_hud_carrarese_001" path="res://scenes/tren/hud.tscn" id="9_hud"]
+[ext_resource type="PackedScene" uid="uid://p4us3m3nu01" path="res://scenes/menu/pause_menu.tscn" id="10_psmn"]
+[ext_resource type="PackedScene" uid="uid://c_boss_spezia_001" path="res://scenes/tren/boss_spezia.tscn" id="11_boss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(3180, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceiling"]
+size = Vector2(3180, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_left"]
+size = Vector2(40, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_right"]
+size = Vector2(40, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_terminal_wall"]
+size = Vector2(40, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seat1"]
+size = Vector2(120, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seat2"]
+size = Vector2(120, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seat3"]
+size = Vector2(120, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seat4"]
+size = Vector2(120, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seat5"]
+size = Vector2(120, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(40, 360)
+
+[node name="TrenLevel" type="Node2D"]
+script = ExtResource("1_scr")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(600, 180)
+texture = ExtResource("2_paisaje")
+
+[node name="TrainWagons" type="Node2D" parent="."]
+z_index = 0
+
+[node name="Wagon1" type="Sprite2D" parent="TrainWagons"]
+position = Vector2(450.5, 180)
+texture = ExtResource("3_wagon")
+
+[node name="Wagon2" type="Sprite2D" parent="TrainWagons"]
+position = Vector2(1351.5, 180)
+texture = ExtResource("3_wagon")
+
+[node name="Wagon3" type="Sprite2D" parent="TrainWagons"]
+position = Vector2(2252.5, 180)
+texture = ExtResource("3_wagon")
+
+[node name="WagonEnd" type="Sprite2D" parent="TrainWagons"]
+position = Vector2(2903, 180)
+texture = ExtResource("4_vagon_end")
+
+[node name="StaticCollisions" type="StaticBody2D" parent="."]
+collision_mask = 6
+
+[node name="Floor" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(1550, 358)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Ceiling" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(1550, 24)
+shape = SubResource("RectangleShape2D_ceiling")
+
+[node name="LeftWall" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(-20, 180)
+shape = SubResource("RectangleShape2D_wall_left")
+
+[node name="RightWall" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(2723, 180)
+shape = SubResource("RectangleShape2D_wall_right")
+
+[node name="TerminalWall" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(3090, 180)
+shape = SubResource("RectangleShape2D_terminal_wall")
+
+[node name="SeatPlatform1" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(450, 250)
+shape = SubResource("RectangleShape2D_seat1")
+one_way_collision = true
+
+[node name="SeatPlatform2" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(1100, 250)
+shape = SubResource("RectangleShape2D_seat2")
+one_way_collision = true
+
+[node name="SeatPlatform3" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(1350, 250)
+shape = SubResource("RectangleShape2D_seat3")
+one_way_collision = true
+
+[node name="SeatPlatform4" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(1950, 250)
+shape = SubResource("RectangleShape2D_seat4")
+one_way_collision = true
+
+[node name="SeatPlatform5" type="CollisionShape2D" parent="StaticCollisions"]
+position = Vector2(2250, 250)
+shape = SubResource("RectangleShape2D_seat5")
+one_way_collision = true
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="Jersey" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(450, 210)
+item_type = "camiseta"
+points = 150
+
+[node name="Scarf" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(1350, 210)
+item_type = "bufanda"
+points = 100
+
+[node name="Cap" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(2020, 210)
+item_type = "gorra"
+points = 100
+
+[node name="Stone1" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(280, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone2" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(550, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone3" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(750, 210)
+item_type = "piedra"
+points = 20
+
+[node name="Stone4" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(1000, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone5" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(1150, 210)
+item_type = "piedra"
+points = 20
+
+[node name="Stone6" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(1450, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone7" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(1650, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone8" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(1900, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone9" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(2150, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone10" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(2280, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Stone11" parent="Collectibles" instance=ExtResource("7_clct")]
+position = Vector2(2360, 314)
+item_type = "piedra"
+points = 20
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Flag1" parent="Obstacles" instance=ExtResource("8_obst")]
+position = Vector2(520, 320)
+obstacle_type = "bandera_spezia"
+
+[node name="Flag2" parent="Obstacles" instance=ExtResource("8_obst")]
+position = Vector2(980, 320)
+obstacle_type = "bandera_spezia"
+
+[node name="Flag3" parent="Obstacles" instance=ExtResource("8_obst")]
+position = Vector2(1420, 320)
+obstacle_type = "bandera_spezia"
+
+[node name="Flag4" parent="Obstacles" instance=ExtResource("8_obst")]
+position = Vector2(1880, 320)
+obstacle_type = "bandera_spezia"
+
+[node name="BossTrigger" type="Area2D" parent="."]
+position = Vector2(2080, 180)
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossTrigger"]
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="BossSpezia" parent="." instance=ExtResource("11_boss")]
+position = Vector2(2460, 328)
+
+[node name="Player" parent="." instance=ExtResource("6_plyr")]
+position = Vector2(120, 328)
+
+[node name="HUD" parent="." instance=ExtResource("9_hud")]
+
+[node name="PauseMenu" parent="." groups=["pause_menu"] instance=ExtResource("10_psmn")]
+visible = false

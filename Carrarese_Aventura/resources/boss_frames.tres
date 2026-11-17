@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://pf_boss_spezia_001"]
+
+[ext_resource type="Texture2D" path="res://assets/personajes/boss_spezia/idle_0.png" id="1_id0"]
+[ext_resource type="Texture2D" path="res://assets/personajes/boss_spezia/idle_1.png" id="2_id1"]
+[ext_resource type="Texture2D" path="res://assets/personajes/boss_spezia/prepare_throw.png" id="3_prep"]
+[ext_resource type="Texture2D" path="res://assets/personajes/boss_spezia/throw.png" id="4_thw"]
+[ext_resource type="Texture2D" path="res://assets/personajes/boss_spezia/hurt.png" id="5_hrt"]
+[ext_resource type="Texture2D" path="res://assets/personajes/boss_spezia/defeated.png" id="6_def"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_id0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_id1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_prep")
+}],
+"loop": false,
+"name": &"prepare",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_thw")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hrt")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_def")
+}],
+"loop": false,
+"name": &"defeated",
+"speed": 1.0
+}]

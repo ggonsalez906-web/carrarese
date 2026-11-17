@@ -1,0 +1,210 @@
+[gd_scene load_steps=7 format=3 uid="uid://c_intro_sec_001"]
+
+[ext_resource type="Script" path="res://scripts/intro_secuencia.gd" id="1_scr"]
+[ext_resource type="Texture2D" path="res://assets/escenarios/estacion_carrara.png" id="2_est"]
+[ext_resource type="SpriteFrames" uid="uid://pf_carrarese_001" path="res://resources/player_frames.tres" id="3_ply"]
+[ext_resource type="Texture2D" path="res://assets/escenarios/mapa_italia_intro.png" id="4_map"]
+[ext_resource type="Texture2D" path="res://assets/objetos/tren_icono.png" id="5_trn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
+bg_color = Color(0.05, 0.08, 0.15, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98, 0.82, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="IntroSecuencia" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scr")
+
+[node name="StationView" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StationBg" type="TextureRect" parent="StationView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_est")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SignContainer" type="PanelContainer" parent="StationView"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 15.0
+offset_right = 180.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+
+[node name="StationLabel" type="Label" parent="StationView/SignContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+text = "STAZIONE DI CARRARA CENTRALE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Protagonist" type="AnimatedSprite2D" parent="StationView"]
+position = Vector2(60, 230)
+scale = Vector2(1.18, 1.18)
+sprite_frames = ExtResource("3_ply")
+animation = &"walk"
+
+[node name="NarrativePanel" type="PanelContainer" parent="StationView"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -45.0
+offset_right = 260.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+
+[node name="NarrativeLabel" type="Label" parent="StationView/NarrativePanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "El Hincha del Carrarese se dirige al andén para tomar el tren al Derbi..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipLabel" type="Label" parent="StationView"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.7)
+theme_override_font_sizes/font_size = 9
+text = "[ESPACIO / ENTER: OMITIR]"
+horizontal_alignment = 2
+
+[node name="MapView" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapBg" type="TextureRect" parent="MapView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_map")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RouteLine" type="Line2D" parent="MapView"]
+points = PackedVector2Array(300, 70, 275, 125, 250, 175, 225, 225, 200, 275)
+width = 4.0
+default_color = Color(1, 0.85, 0.1, 0.9)
+
+[node name="CarraraPin" type="Label" parent="MapView"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 62.0
+offset_right = 460.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.1, 0.6, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "● Carrara (Inicio - Salida)"
+
+[node name="SpeziaPin" type="Label" parent="MapView"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 268.0
+offset_right = 210.0
+offset_bottom = 286.0
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "La Spezia ● (Destino - Derbi)"
+
+[node name="TrainIcon" type="Sprite2D" parent="MapView"]
+position = Vector2(300, 70)
+texture = ExtResource("5_trn")
+
+[node name="NarrativePanel" type="PanelContainer" parent="MapView"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -45.0
+offset_right = 260.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+
+[node name="NarrativeLabel" type="Label" parent="MapView/NarrativePanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "Viajando por la costa de Toscana y Liguria... ¡Rumbo al Derbi!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipLabel" type="Label" parent="MapView"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.7)
+theme_override_font_sizes/font_size = 9
+text = "[ESPACIO / ENTER: OMITIR]"
+horizontal_alignment = 2
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

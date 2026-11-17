@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c_boss_spezia_001"]
+
+[ext_resource type="Script" path="res://scripts/boss_spezia.gd" id="1_scr"]
+[ext_resource type="SpriteFrames" uid="uid://pf_boss_spezia_001" path="res://resources/boss_frames.tres" id="2_frames"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 48.0
+height = 175.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hitbox"]
+radius = 56.0
+height = 185.0
+
+[node name="BossSpezia" type="CharacterBody2D" groups=["boss", "enemies"]]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_scr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -100)
+sprite_frames = ExtResource("2_frames")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -88)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="ThrowPoint" type="Marker2D" parent="."]
+position = Vector2(-75, -95)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -88)
+shape = SubResource("CapsuleShape2D_hitbox")
